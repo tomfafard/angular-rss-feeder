@@ -1,0 +1,24 @@
+<script src="https://code.angularjs.org/1.5.0/angular.min.js"></script>
+
+<div ng-app="feedApp" ng-controller="FeedController as ctrl">
+  <form role="form" name="feedForm" nosubmit="">
+    <input class="form-control" required="" type="url" ng-model="ctrl.feedUrl"/>
+    <button class="btn btn-primary" ng-click="ctrl.loadFeed" ng-disabled="feedForm.$invalid">Load Feed</button>
+  </form>
+  </hr>
+  <h1>
+    <a ng-href="{{ctrl.feed.link}}" target="_blank">
+      {{ctrl.feed.title}}
+    </a>
+  </h1>
+  <p>{{ctrl.feed.description}}</p>
+  <ul>
+    <li ng-repeat="entry in ctrl.feed.entries">
+      <a ng-href="{{entry.link}}" target="_blank">
+        {{entry.title}}
+      </a>
+      &nbsp;&mdash;&nbsp;
+      {{entry.contentSnippet}}
+    </li>
+  </ul>
+</div>
